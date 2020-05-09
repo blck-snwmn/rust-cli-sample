@@ -14,6 +14,9 @@ fn main() {
         .unwrap_or_default();
     let prefix = format!("{}{}", param.id, name);
     writeln!(handle, "{}:do", prefix).unwrap();
+    for c in 0..param.count {
+        writeln!(handle, "{}:do {}", prefix, c).unwrap();
+    }
 }
 
 #[derive(Debug, StructOpt)]
@@ -23,4 +26,6 @@ struct Parameter {
     name: Option<String>,
     #[structopt(short = "t", long = "type")]
     param_type: String,
+    #[structopt(short, long)]
+    count: u64,
 }
