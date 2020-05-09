@@ -9,6 +9,7 @@ default-run = "main"
 
 [dependencies]
 structopt = "0.3.13"
+atty = "0.2.14"
 
 [[bin]]
 name = "main"
