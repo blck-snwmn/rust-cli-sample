@@ -3,7 +3,8 @@ use std::io::{self, BufRead, Write};
 fn main() {
     if atty::is(Stream::Stdin) {
         // not support for terminal input
-        println!("input is terminal")
+        println!("input is terminal");
+        return;
     }
     println!("input is not terminal");
     let stdin = io::stdin();
