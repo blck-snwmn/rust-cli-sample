@@ -5,7 +5,7 @@ fn main() {
     // let default = "test";
     // let first_param = std::env::args().nth(1).unwrap_or(default.to_string());
     // println!("{}", first_param);
-    let param = Parameter::from_args();
+    let param: Parameter = Parameter::from_args();
     println!("{:?}", param);
 }
 
