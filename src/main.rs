@@ -1,12 +1,19 @@
+use std::io::{self, Write};
 use structopt::StructOpt;
 
 fn main() {
     println!("Hello, world!");
-    // let default = "test";
-    // let first_param = std::env::args().nth(1).unwrap_or(default.to_string());
-    // println!("{}", first_param);
     let param: Parameter = Parameter::from_args();
     println!("{:?}", param);
+
+    let stdout = io::stdout();
+    let mut handle = io::BufWriter::new(stdout);
+    let name = param
+        .name
+        .map(move |x| "-".to_string() + &x)
+        .unwrap_or_default();
+    let prefix = format!("{}{}", param.id, name);
+    writeln!(handle, "{}:do", prefix).unwrap();
 }
 
 #[derive(Debug, StructOpt)]
