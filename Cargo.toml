@@ -11,6 +11,8 @@ default-run = "main"
 structopt = "0.3.13"
 atty = "0.2.14"
 ansi_term = "0.12.1"
+crossbeam-channel = "0.4.2"
+signal-hook = "0.1.14"
 
 [[bin]]
 name = "main"
@@ -19,3 +21,7 @@ path = "src/main.rs"
 [[bin]]
 name = "iqo"
 path = "src/in-query-out.rs"
+
+[[bin]]
+name = "us"
+path = "src/use-signal.rs"
