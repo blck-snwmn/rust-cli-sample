@@ -1,5 +1,12 @@
 use atty::Stream;
 use std::io::{self, BufRead, Write};
+use structopt::StructOpt;
+
+#[derive(Debug, StructOpt)]
+struct Query {
+    #[structopt(short, long)]
+    query: String,
+}
 fn main() {
     if atty::is(Stream::Stdin) {
         // not support for terminal input
@@ -7,6 +14,10 @@ fn main() {
         return;
     }
     println!("input is not terminal");
+    let q: Query = Query::from_args();
+    println!("{:?}", q);
+    let query = &q.query;
+
     let stdin = io::stdin();
     let mut reader = io::BufReader::new(stdin.lock());
 
@@ -18,7 +29,9 @@ fn main() {
         match reader.read_line(&mut buffer) {
             Ok(0) => break,
             Ok(_) => {
-                write!(writter, "{}", buffer).unwrap();
+                if buffer.contains(query) {
+                    write!(writter, "{}", buffer).unwrap();
+                }
                 buffer.clear();
             }
             Err(e) => {
