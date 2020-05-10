@@ -10,6 +10,7 @@ default-run = "main"
 [dependencies]
 structopt = "0.3.13"
 atty = "0.2.14"
+ansi_term = "0.12.1"
 
 [[bin]]
 name = "main"
