@@ -11,7 +11,7 @@ default-run = "main"
 structopt = "0.3.13"
 atty = "0.2.14"
 ansi_term = "0.12.1"
-crossbeam-channel = "0.4.2"
+crossbeam-channel = "0.4.4"
 signal-hook = "0.1.14"
 
 [[bin]]
